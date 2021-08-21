@@ -1,7 +1,7 @@
 import functools
-from pathlib import Path
-from typing import Callable
 import shutil
+from pathlib import Path
+from typing import Any, Callable
 
 
 class TempFolderContext:
@@ -16,10 +16,10 @@ class TempFolderContext:
         shutil.rmtree(self.folder)
 
 
-def use_temp_folder(folder: str):
-    def decorator(func: Callable):
+def use_temp_folder(folder: str) -> Callable:
+    def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args, **kwargs) -> Any:
             with TempFolderContext(folder):
                 result = func(*args, **kwargs)
             return result
