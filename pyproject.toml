@@ -1,8 +1,12 @@
 [tool.poetry]
 name = "tempfolder"
-version = "0.3.0"
+version = "0.3.1"
 description = "🗂 Easily create temporary folders, add files into them and don't worry about deleting them, tempfolder will take care"
 authors = ["Jorge Alvarado <alvaradosegurajorge@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/jalvaradosegura/tempfolder"
+repository = "https://github.com/jalvaradosegura/tempfolder"
 
 [tool.poetry.dependencies]
 python = "^3.8"
