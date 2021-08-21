@@ -1,0 +1,19 @@
+__pycache__/
+dist/
+*.egg
+wheels/
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+
+# macOS
+.DS_Store
+
+# Vim
+*.swp
+*.swo
+
+# coveralls
+.coveralls.yml
+
