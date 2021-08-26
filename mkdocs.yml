@@ -1,0 +1,9 @@
+site_name: tempfolder
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github-alt
+repo_url: https://github.com/jalvaradosegura/tempfolder
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
