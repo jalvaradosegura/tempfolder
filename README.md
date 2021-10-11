@@ -5,7 +5,12 @@
 [![GitHub license](https://img.shields.io/github/license/jalvaradosegura/tempfolder)](https://github.com/jalvaradosegura/tempfolder/blob/main/LICENSE)
 
 # tempfolder
+
 🗂 Easily create temporary folders, add files into them and don't worry about deleting them, tempfolder will take care
+
+---
+
+Documentation: https://jalvaradosegura.github.io/tempfolder/
 
 ## Installation
 tempfolder is published on [PyPI](https://pypi.org/project/tempfolder/) and can be installed from there:
@@ -13,61 +18,34 @@ tempfolder is published on [PyPI](https://pypi.org/project/tempfolder/) and can 
 pip install tempfolder
 ```
 
-## Usage
-Let's see a case in which we want to test a function that creates a file inside a folder
-```py
+## Quick example
+For a deeper explanation, please check the [docs](https://jalvaradosegura.github.io/tempfolder/)...
+
+Run this and see if you spot the magic, if you don't, please check the [docs](https://jalvaradosegura.github.io/tempfolder/):
+
+``` python
 from pathlib import Path
+
 from tempfolder import use_temp_folder
 
 
-# A function that create a file inside a folder
 def add_config_file_to_folder(folder: str):
-    with open(Path(folder) / 'config.cfg', 'w') as f:
-        f.write('i-like: tempfolder')
+    with open(f'{folder}/config.cfg', 'w') as f:
+        f.write('I_love=tempfolder')
 
 
-# Name of the temporary folder
-TEMP_FOLDER = Path('temp_folder')
-
-
-# Test the function
-@use_temp_folder(TEMP_FOLDER)
+@use_temp_folder('some_folder')
 def test_add_config_file_to_folder():
-    add_config_file_to_folder(TEMP_FOLDER)
-    assert TEMP_FOLDER.exists()
+    add_config_file_to_folder('some_folder')
+    assert Path('some_folder').exists()
+    assert Path('some_folder/config.cfg').exists()
 
 
-# Check that the temporary folder was deleted
-assert not TEMP_FOLDER.exists()
+def test_look_for_the_folder_and_the_file():
+    assert not Path('some_folder').exists()
+    assert not Path('some_folder/config.cfg').exists()
+
+
+test_add_config_file_to_folder()
+test_look_for_the_folder_and_the_file()
 ```
-Run with pytest:
-```
-========= 1 passed in 0.05s =========
-```
-
-If we remove the decorator from the previous code and run the test, we get:
-```py
-from pathlib import Path
-
-
-# A function that create a file inside a folder
-def add_config_file_to_folder(folder: str):
-    with open(Path(folder) / 'config.cfg', 'w') as f:
-        f.write('i-like: tempfolder')
-
-
-# Name of the temporary folder
-TEMP_FOLDER = Path('temp_folder')
-
-
-# Test the function, now with no decorator
-def test_add_config_file_to_folder():
-    add_config_file_to_folder(TEMP_FOLDER)
-    assert TEMP_FOLDER.exists()
-```
-Test:
-```sh
-> with open(Path(folder) / 'config.cfg', 'w') as f:
-E FileNotFoundError: [Errno 2] No such file or directory: 'temp_folder/config.cfg'
-```
-As you can see the folder wasn't even created, because tempfolder is the one who takes care of the creation and deletion of your temporary folders (and its files).

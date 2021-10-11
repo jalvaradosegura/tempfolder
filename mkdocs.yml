@@ -7,3 +7,7 @@ repo_url: https://github.com/jalvaradosegura/tempfolder
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
+nav:
+  - 'index.md'
+  - 'installation.md'
+  - 'example.md'

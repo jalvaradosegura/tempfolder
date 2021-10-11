@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tempfolder"
-version = "0.4.0"
+version = "0.4.1"
 description = "🗂 Easily create temporary folders, add files into them and don't worry about deleting them, tempfolder will take care"
 authors = ["Jorge Alvarado <alvaradosegurajorge@gmail.com>"]
 readme = "README.md"

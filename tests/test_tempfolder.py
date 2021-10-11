@@ -4,7 +4,7 @@ from tempfolder import __version__, use_temp_folder
 
 
 def test_version():
-    assert __version__ == '0.4.0'
+    assert __version__ == '0.4.1'
 
 
 TEMP_FOLDER = Path('_temp')
